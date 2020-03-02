@@ -28,5 +28,5 @@ Projeto Desenvolvido pelos os desenvolvedores da [Nexus Developers](https://gith
 3. [João Muribeca](https://github.com/CheffJ)
 
 #### Designer
-1.[Pedro Victor](https://www.linkedin.com/in/pedro-victor-gomes-021075192/)
+1. [Pedro Victor](https://www.linkedin.com/in/pedro-victor-gomes-021075192/)
 
