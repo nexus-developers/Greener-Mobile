@@ -9,7 +9,7 @@
 <br>
 
 ## Sobre a Aplicação
-Tenha praticidade, na hora que fizer as suas visitas. O Greener, tem como fundamento, seguir todas as diretrizes da norma <strong>RDC 216</strong>, tornando seu trabalho mais rápido e efetivo.  
+Tenha praticidade, na hora que fizer as suas visitas. <strong>O Greener</strong>, tem como fundamento, seguir todas as diretrizes da norma <strong>RDC 216</strong>, tornando seu trabalho mais rápido e efetivo.  
 
 ## Vantagens
 
