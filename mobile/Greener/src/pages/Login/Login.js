@@ -32,6 +32,10 @@ export default function Logins({ navigation }) {
       
   }
 
+  const onCreateAccountPress = () => {
+    navigation.navigate('Register')
+  } 
+
   return (
     <Container>
       <ImageContainer>
@@ -78,7 +82,7 @@ export default function Logins({ navigation }) {
 
       <RegisterText>
         Não possui cadastro? 
-        <RegisterLink>
+        <RegisterLink onPress={() => onCreateAccountPress()}>
           CADASTRE-SE
         </RegisterLink>
       </RegisterText>
