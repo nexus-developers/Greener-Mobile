@@ -1,17 +1,37 @@
-import React from 'react';
-// import firebase from '../../firebase'
+import React, { useState } from 'react';
 
+import firebase from '../../firebase'
 
 import { EvilIcons } from '@expo/vector-icons'
 
-import { Image, Text } from 'react-native';
+import { Image, Text, ActivityIndicator } from 'react-native';
 
 import Icon from './Assets/icon.png'
 
 
 import { Container , ImageContainer,Title, Form, InputArea, SubmitButton, SubmitButtonText, ForgotPassword, ForgotPasswordText, RegisterText, RegisterLink } from './styles'
 
-export default function Logins() {
+export default function Logins({ navigation }) {
+
+  const [ user, setUser ] = useState('')
+  const [ password, setPassword ] = useState('')
+  const [ Loading, setLoading ] = useState(false)
+
+  const handleLogin = () => {
+
+    setLoading(true)
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(user, password)
+      .then(() => {
+        setLoading(false)
+        navigation.navigate('Main')
+      })
+      .catch(error => console.log(error));
+      
+  }
+
   return (
     <Container>
       <ImageContainer>
@@ -23,6 +43,8 @@ export default function Logins() {
       <InputArea
         autoCapitalize='none'
         placeholder='Usuário'
+        value={user}
+        onChangeText={user => setUser(user)}
       >
       </InputArea>
     </Form>
@@ -30,13 +52,26 @@ export default function Logins() {
       <EvilIcons name='lock' size={30} color='#84BD93'/>
       <InputArea
         autoCapitalize='none'
+        type='password'
         placeholder='Senha'
+        value={password}
+        onChangeText={password => setPassword(password)}
       >
       </InputArea>
     </Form>
 
-    <SubmitButton>
-      <SubmitButtonText>LOGIN</SubmitButtonText>
+    <SubmitButton
+       onPress={() => handleLogin()}
+    >
+        {
+          Loading ? (
+            <ActivityIndicator color='#fff'/>
+          ) : (
+            <SubmitButtonText>
+              LOGIN
+            </SubmitButtonText>
+          )
+        }
     </SubmitButton>
 
       <ForgotPasswordText>Esqueceu a senha?</ForgotPasswordText>
