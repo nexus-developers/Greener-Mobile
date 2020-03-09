@@ -35,8 +35,12 @@ export default function Logins({ navigation }) {
   }
 
   const onCreateAccountPress = () => {
-    navigation.navigate('Register')
+    navigation.navigate('register')
   } 
+
+  const onForgotPasswordPress = () => {
+    navigation.navigate('recuperarSenha')
+  }
 
   return (
     <Container>
@@ -79,7 +83,7 @@ export default function Logins({ navigation }) {
         }
     </SubmitButton>
 
-      <ForgotPasswordText>Esqueceu a senha?</ForgotPasswordText>
+      <ForgotPasswordText onPress={() => onForgotPasswordPress()}>Esqueceu a senha?</ForgotPasswordText>
 
       <RegisterText>
         Não possui cadastro? 
