@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { Image, ActivityIndicator, Alert } from 'react-native';
-import { EvilIcons } from '@expo/vector-icons';
-import { Container, ImageContainer, Title, Form, InputArea, SubmitButton, SubmitButtonText} from '../pages/Login/styles';
-import Icon from '../pages/Login/Assets/icon.png';
+
 import firebase from '../firebase'
+
+import { Image, ActivityIndicator, Alert } from 'react-native';
+
+import { EvilIcons } from '@expo/vector-icons';
+
+import { Container, ImageContainer, Title, Form, InputArea, SubmitButton, SubmitButtonText} from '../pages/Login/styles';
+
+import Icon from '../pages/Login/Assets/icon.png';
+
 
 
 export default function Register({ navigation }) {
