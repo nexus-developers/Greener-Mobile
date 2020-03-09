@@ -26,7 +26,7 @@ export default function Register({ navigation }) {
     firebase.auth().createUserWithEmailAndPassword(user, password)
       .then(() => {
         setLoading(false)
-        navigation.navigate('Main')
+        navigation.navigate('main')
       }, (error) => {
         Alert.alert(error.message);
         setLoading(false)
