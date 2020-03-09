@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 
-import firebase from '../firebase'
+import firebase from '../../firebase'
 
 import { Image, ActivityIndicator, Alert } from 'react-native';
 
 import { EvilIcons } from '@expo/vector-icons';
 
-import { Container, ImageContainer, Title, Form, InputArea, SubmitButton, SubmitButtonText} from '../pages/Login/styles';
+import { Container, ImageContainer, Form, InputArea, SubmitButton, SubmitButtonText} from './styles';
 
-import Icon from '../pages/Login/Assets/icon.png';
-
-
+import Icon from '../../Global/Assets/icon.png'
 
 export default function Register({ navigation }) {
   const [user, setUser] = useState('')
@@ -39,7 +37,6 @@ export default function Register({ navigation }) {
     <Container>
       <ImageContainer>
         <Image source={Icon} />
-        <Title>GREENER</Title>
       </ImageContainer>
       <Form>
         <EvilIcons name='user' size={30} color='#84BD93' />

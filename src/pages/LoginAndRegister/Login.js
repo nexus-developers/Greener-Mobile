@@ -6,7 +6,7 @@ import { EvilIcons } from '@expo/vector-icons'
 
 import { Image, Text, ActivityIndicator } from 'react-native';
 
-import Icon from './Assets/icon.png'
+import Icon from '../../Global/Assets/icon.png'
 
 
 import { Container , ImageContainer,Title, Form, InputArea, SubmitButton, SubmitButtonText, ForgotPassword, ForgotPasswordText, RegisterText, RegisterLink } from './styles'
@@ -26,7 +26,9 @@ export default function Logins({ navigation }) {
       .signInWithEmailAndPassword(user, password)
       .then(() => {
         setLoading(false)
-        navigation.navigate('Main')
+        setUser('')
+        setPassword('')
+        navigation.navigate('main')
       })
       .catch(error => console.log(error));
       
@@ -40,10 +42,9 @@ export default function Logins({ navigation }) {
     <Container>
       <ImageContainer>
         <Image source={Icon} /> 
-        <Title>GREENER</Title>
       </ImageContainer>
     <Form>
-      <EvilIcons name='user' size={30} color='#84BD93'/>
+      <EvilIcons name='user' size={30} color='#62BE92'/>
       <InputArea
         autoCapitalize='none'
         placeholder='Usuário'
@@ -53,7 +54,7 @@ export default function Logins({ navigation }) {
       </InputArea>
     </Form>
     <Form>
-      <EvilIcons name='lock' size={30} color='#84BD93'/>
+      <EvilIcons name='lock' size={30} color='#62BE92'/>
       <InputArea
         autoCapitalize='none'
         type='password'

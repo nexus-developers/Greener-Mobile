@@ -10,7 +10,7 @@ export const Container = styled.View`
 export const ImageContainer = styled.View`
     justify-content: center;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 150px;
 `
 
 export const Title = styled.Text`
@@ -24,6 +24,7 @@ export const Form = styled.View`
     justify-content: center;
     margin: 0 30px 20px 20px;
     align-items: center;
+
 `
 
 export const InputArea  = styled.TextInput.attrs({
@@ -36,7 +37,7 @@ export const InputArea  = styled.TextInput.attrs({
 `
 export const SubmitButton = styled(RectButton)`
     margin-top: 30px;
-    background-color: #84BD93;
+    background-color: #62BE92;
     padding: 18px;
     margin: 0 35px;
     border-radius: 4px;
@@ -62,6 +63,6 @@ export const RegisterText = styled.Text`
 `
 export const RegisterLink = styled.Text`
     text-align: center;
-    color: #84BD93;
+    color: #62BE92;
 
 `
