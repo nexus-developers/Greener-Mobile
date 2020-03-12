@@ -7,13 +7,9 @@ import Wellcome from './src/pages/Wellcome/Wellcome'
 import Login from './src/pages/LoginAndRegister/Login'
 import Register from './src/pages/LoginAndRegister/Register'
 import recuperarSenha from './src/pages/LoginAndRegister/recuperarSenha'
-
-// Tab Navigator
-import MainRoutes from './src/pages/Main/Main.routes'
+import MainRoutes from './src/pages/Main/Main'
 
 const Stack = createStackNavigator()
-
-
 
 export default function Routes(){
     return(
