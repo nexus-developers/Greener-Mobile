@@ -10,7 +10,7 @@ export const Container = styled.View`
 export const ImageContainer = styled.View`
     justify-content: center;
     align-items: center;
-    margin-bottom: 150px;
+    margin-bottom: 50px;
 `
 
 export const Title = styled.Text`
@@ -27,7 +27,7 @@ export const Form = styled.View`
 
 `
 
-export const InputArea  = styled.TextInput.attrs({
+export const InputArea = styled.TextInput.attrs({
     placeholderTextColor: '#A2a2a2'
 })`
     flex: 1;
@@ -36,6 +36,7 @@ export const InputArea  = styled.TextInput.attrs({
     color: #000;
 `
 export const SubmitButton = styled(RectButton)`
+    width: 90%;
     margin-top: 30px;
     background-color: #62BE92;
     padding: 18px;
