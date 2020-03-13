@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 import firebase from '../../firebase'
 
-import { Image, ActivityIndicator, Alert } from 'react-native';
+import { Image, ActivityIndicator, Alert, KeyboardAvoidingView, StyleSheet } from 'react-native';
 
 import { EvilIcons } from '@expo/vector-icons';
 
-import { Container, ImageContainer, Form, InputArea, SubmitButton, SubmitButtonText} from './styles';
+import { Container, ImageContainer, Form, InputArea, SubmitButton, SubmitButtonText } from './styles';
 
 import Icon from '../../Global/Assets/icon.png'
 
@@ -34,7 +34,7 @@ export default function Register({ navigation }) {
   }
 
   return (
-    <Container>
+    <KeyboardAvoidingView style={styles.background} behavior="padding" enabled>
       <ImageContainer>
         <Image source={Icon} />
       </ImageContainer>
@@ -81,12 +81,21 @@ export default function Register({ navigation }) {
           ) : (
               <SubmitButtonText>
                 Registrar
-            </SubmitButtonText>
+              </SubmitButtonText>
             )
         }
       </SubmitButton>
 
-    </Container>
+    </KeyboardAvoidingView>
 
   );
 }
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  }
+})
