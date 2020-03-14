@@ -1,7 +1,21 @@
 import React, { useState, Component } from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
 
-import { Container, Header, HeaderText, MenuHeader, MenuHeaderText } from './styles'
+import { TouchableOpacity, StyleSheet, Text, ImageBackground } from 'react-native';
+
+import { ScrollView } from 'react-native-gesture-handler'
+
+import Plants from './Assets/plants.png'
+
+import { 
+  Container, 
+  Header,
+  HeaderText, 
+  MenuHeader, 
+  MenuHeaderText, 
+  Card, 
+  Cards,
+  TextCard,
+} from './styles'
 
 export default class pages extends Component {
   state = {
@@ -27,12 +41,44 @@ export default class pages extends Component {
     );
   }
 
+  renderScreens(activeScreen){
+    const { navigation } = this.props
+
+    if(activeScreen == 'Home'){
+      return(
+        <Cards>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('form')}
+          >
+            <Card style={styles.card}>
+              <TextCard>Criar Vistoria</TextCard>
+            </Card>   
+          </TouchableOpacity>
+      </Cards>
+      )
+    }
+    if(activeScreen == 'Vistorias'){
+      return(
+        <Container>
+          <Text>Você aina não possui visitas</Text>
+        </Container>
+      )
+    }
+    else{
+      return(
+        <Container>
+          <Text>Ops! Algo deu errao.</Text>
+        </Container>
+      )
+    }
+  }
+
   render(){
 
-    const tabs = [ 'Home', 'Visitas', 'Histórico' ]
+    const tabs = [ 'Home', 'Vistorias', 'Análises' ]
     const { active } = this.state
+
     return (
-      
       <Container>
         <Header>
             <HeaderText >
@@ -44,6 +90,9 @@ export default class pages extends Component {
         <MenuHeader>
           {tabs.map(tab => this.renderTab(tab))}
         </MenuHeader>
+          <ImageBackground source={Plants} style={{width: '100%', height: '100%', flex: 1}}>
+            { this.renderScreens(active) }
+        </ImageBackground>
       </Container>
     );
   }

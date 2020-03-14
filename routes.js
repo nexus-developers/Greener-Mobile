@@ -8,6 +8,7 @@ import Login from './src/pages/LoginAndRegister/Login'
 import Register from './src/pages/LoginAndRegister/Register'
 import recuperarSenha from './src/pages/LoginAndRegister/recuperarSenha'
 import MainRoutes from './src/pages/Main/Main'
+import Form from './src/pages/Visitas/Form'
 
 const Stack = createStackNavigator()
 
@@ -19,6 +20,7 @@ export default function Routes(){
             <Stack.Screen name='register' component={Register}/>
             <Stack.Screen name='recuperarSenha' component={recuperarSenha} />
             <Stack.Screen name='main' component={MainRoutes} />
+            <Stack.Screen name='form' component={Form} />
         </Stack.Navigator>
 
     )
