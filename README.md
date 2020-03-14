@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/49910898/75724278-d24ba000-5cbc-11ea-80ab-9413e498e750.png" height="160" width="600" alt="Unform" />
+  <img src="https://user-images.githubusercontent.com/49910898/75724278-d24ba000-5cbc-11ea-80ab-9413e498e750.png" height="180" width="600" alt="Unform" />
 </p>
 
 <h3 align="center">
