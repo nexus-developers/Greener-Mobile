@@ -1,6 +1,6 @@
 import React, { useState, Component } from 'react';
 
-import { TouchableOpacity, StyleSheet, Text, ImageBackground } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, ImageBackground, AsyncStorage } from 'react-native';
 
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -20,7 +20,26 @@ import {
 export default class pages extends Component {
   state = {
     active: "Home",
-    pages: []
+    pages: [],
+    survey: []
+  }
+
+  async componentDidMount(){
+    
+    try{
+      const a = await AsyncStorage.getItem('survey')
+
+      if(a === null){
+        return null
+
+      }
+      else{
+        this.setState({ survey: a })
+      }
+    }catch(e){
+      alert(e)
+    }
+    
   }
 
 
@@ -43,6 +62,7 @@ export default class pages extends Component {
 
   renderScreens(activeScreen){
     const { navigation } = this.props
+    const { survey } = this.state
 
     if(activeScreen == 'Home'){
       return(
@@ -60,7 +80,7 @@ export default class pages extends Component {
     if(activeScreen == 'Vistorias'){
       return(
         <Container>
-          <Text>Você aina não possui visitas</Text>
+          <Text>{survey.a.name}</Text>
         </Container>
       )
     }
