@@ -29,9 +29,9 @@ export default class Form extends Component {
 
         const { navigation } = this.props
 
-        this.setState({ loading: true })
+        
 
-        firebase.database().ref('Survey/').set({
+        firebase.database().ref('survey/').set({
             name, 
             date,
             local
@@ -46,7 +46,6 @@ export default class Form extends Component {
             local: '',
             loading: false
         })
-
         navigation.navigate('main')
     }
     
@@ -83,6 +82,7 @@ export default class Form extends Component {
                     <CreateSurvey
                         onPress={() => {
                             this.writeUserData(name, date, local)
+                            this.setState({ loading: true })
                         }}
                     >
                         {

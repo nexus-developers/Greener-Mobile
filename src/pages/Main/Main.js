@@ -1,6 +1,6 @@
 import React, { useState, Component } from 'react';
 
-import { TouchableOpacity, StyleSheet, Text, ImageBackground, AsyncStorage } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, ImageBackground, AsyncStorage, FlatList } from 'react-native';
 
 import firebase from 'firebase'
 
@@ -25,13 +25,12 @@ export default class pages extends Component {
   }
 
   getSurvey = () => {
-    firebase.database().ref('survey/').on('value', snapshot => {
-      let data = snapshot.val() ? snapshot.val() : null
-      let dataItens = { ...data }
+     firebase.database().ref('/').on('value', snapshot => {
+      let data = snapshot.val() 
+      let dataItens = data
       this.setState({
         survey: dataItens
       })
-      console.log(this.state.survey)
     })
   }
   componentDidMount(){
@@ -56,10 +55,13 @@ export default class pages extends Component {
     );
   }
 
-  renderScreens(activeScreen){
+  renderScreens = (activeScreen) =>{
     const { navigation } = this.props
-    const { survey } = this.state
+    const { survey } = this.state.survey
 
+    console.log(survey)
+
+    
     if(activeScreen == 'Home'){
       return(
         <Cards>
@@ -74,9 +76,20 @@ export default class pages extends Component {
       )
     }
     if(activeScreen == 'Vistorias'){
+
       return(
         <Container>
-          <Text>{survey.name}</Text>
+          <FlatList
+            data={survey}
+            keyExtractor={item => item.name}
+            renderItem={({item}) => (
+              <TouchableOpacity>
+                <Card>
+                  <TextCard>{item.name}</TextCard>
+                </Card>
+              </TouchableOpacity>
+            )}
+          />
         </Container>
       )
     }
