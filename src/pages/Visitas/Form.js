@@ -31,7 +31,7 @@ export default class Form extends Component {
 
         this.setState({ loading: true })
 
-        firebase.database().ref('survey/').push({
+        firebase.database().ref('Survey/').set({
             name, 
             date,
             local

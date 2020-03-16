@@ -2,7 +2,7 @@ import React, { useState, Component } from 'react';
 
 import { TouchableOpacity, StyleSheet, Text, ImageBackground, AsyncStorage } from 'react-native';
 
-import { ScrollView } from 'react-native-gesture-handler'
+import firebase from 'firebase'
 
 import Plants from './Assets/plants.png'
 
@@ -21,25 +21,21 @@ export default class pages extends Component {
   state = {
     active: "Home",
     pages: [],
-    survey: []
+    survey: {}
   }
 
-  async componentDidMount(){
-    
-    try{
-      const a = await AsyncStorage.getItem('survey')
-
-      if(a === null){
-        return null
-
-      }
-      else{
-        this.setState({ survey: a })
-      }
-    }catch(e){
-      alert(e)
-    }
-    
+  getSurvey = () => {
+    firebase.database().ref('survey/').on('value', snapshot => {
+      let data = snapshot.val() ? snapshot.val() : null
+      let dataItens = { ...data }
+      this.setState({
+        survey: dataItens
+      })
+      console.log(this.state.survey)
+    })
+  }
+  componentDidMount(){
+    this.getSurvey()
   }
 
 
@@ -80,7 +76,7 @@ export default class pages extends Component {
     if(activeScreen == 'Vistorias'){
       return(
         <Container>
-          <Text>{survey.a.name}</Text>
+          <Text>{survey.name}</Text>
         </Container>
       )
     }

@@ -15,7 +15,7 @@ const Stack = createStackNavigator()
 
 export default function Routes(){
     return(
-        <Stack.Navigator headerMode="none" initialRouteName='wellcome'>
+        <Stack.Navigator headerMode="none" initialRouteName='main'>
             <Stack.Screen name='wellcome' component={Wellcome}/>
             <Stack.Screen name='login' component={Login} />
             <Stack.Screen name='register' component={Register}/>
