@@ -21,20 +21,20 @@ export default class pages extends Component {
   state = {
     active: "Home",
     pages: [],
-    survey: {}
+    survey: []
   }
 
   getSurvey = () => {
      firebase.database().ref('/').on('value', snapshot => {
-      let data = snapshot.val() 
-      let dataItens = data
-      this.setState({
-        survey: dataItens
-      })
+      const data = snapshot.val() 
+      // let dataItens = data
+      this.setState(
+        data
+      )
     })
   }
   componentDidMount(){
-    this.getSurvey()
+    this.getSurvey();
   }
 
 
@@ -57,9 +57,9 @@ export default class pages extends Component {
 
   renderScreens = (activeScreen) =>{
     const { navigation } = this.props
-    const { survey } = this.state.survey
+    const { survey } = this.state
 
-    console.log(survey)
+    console.dir(survey);
 
     
     if(activeScreen == 'Home'){
@@ -81,14 +81,14 @@ export default class pages extends Component {
         <Container>
           <FlatList
             data={survey}
-            keyExtractor={item => item.name}
-            renderItem={({item}) => (
+            renderItem={({item}) => 
               <TouchableOpacity>
                 <Card>
                   <TextCard>{item.name}</TextCard>
                 </Card>
               </TouchableOpacity>
-            )}
+            }
+            keyExtractor={item => item.name}
           />
         </Container>
       )

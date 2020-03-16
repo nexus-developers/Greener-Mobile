@@ -22,20 +22,23 @@ export default class Form extends Component {
         name: '',
         date: '',
         local: '',
-        loading: false
+        loading: false,
+        survey: []
     }
 
     writeUserData(name, date, local){
 
         const { navigation } = this.props
+        const { survey } = this.state;
+        // const name = this.ref.name.value;
+        // const date = this.ref.date.value;
+        // const local = this.ref.local.value;
 
+        survey.push({ name, date, local });
+        this.setState({survey});
         
 
-        firebase.database().ref('survey/').set({
-            name, 
-            date,
-            local
-        }).then((data) => {
+        firebase.database().ref().child('survey').set(this.state.survey).then((data) => {
             console.log('data', data);
         }).catch((error) => {
             console.log('error', error)
@@ -46,6 +49,9 @@ export default class Form extends Component {
             local: '',
             loading: false
         })
+        // this.ref.name.value = '';
+        // this.ref.date.value = '';
+        // this.ref.local.value = '';
         navigation.navigate('main')
     }
     
@@ -62,6 +68,7 @@ export default class Form extends Component {
                         onChangeText={nameText => this.setState({ name: nameText })}
                         onSubmitEditing={this.handleAddSurvey}
                         value={name}
+                        // ref='name'
                     />
 
                     <LabelText>Data:</LabelText>
@@ -69,7 +76,7 @@ export default class Form extends Component {
                         onChangeText={dateText => this.setState({ date: dateText })}
                         onSubmitEditing={this.handleAddSurvey}
                         value={date}
-
+                        // ref='date'
                     />
 
                     <LabelText>Localidade:</LabelText>
@@ -77,6 +84,7 @@ export default class Form extends Component {
                         onChangeText={localText => this.setState({ local: localText })}
                         onSubmitEditing={this.handleAddSurvey}
                         value={local}
+                        // ref='local'
                     />
 
                     <CreateSurvey
