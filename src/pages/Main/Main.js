@@ -15,6 +15,10 @@ import {
   Card, 
   Cards,
   TextCard,
+  SurveyCard,
+  CardDate,
+  Divisor,
+  CardLocation
 } from './styles'
 
 export default class pages extends Component {
@@ -78,19 +82,27 @@ export default class pages extends Component {
     if(activeScreen == 'Vistorias'){
 
       return(
-        <Container>
+        <Cards>
           <FlatList
             data={survey}
             renderItem={({item}) => 
-              <TouchableOpacity>
-                <Card>
+              <TouchableOpacity style={styles.cards}>
+                <SurveyCard>
+                  <Divisor>
+                    <CardDate>
+                      { item.date }
+                    </CardDate>
+                    <CardLocation>
+                      { item.local }
+                    </CardLocation>
+                  </Divisor>
                   <TextCard>{item.name}</TextCard>
-                </Card>
+                </SurveyCard>
               </TouchableOpacity>
             }
             keyExtractor={item => item.name}
           />
-        </Container>
+        </Cards>
       )
     }
     else{
@@ -141,4 +153,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#62BE92',
     borderBottomWidth: 3
   },
+  cards: {
+    marginBottom: 5
+  }
 })

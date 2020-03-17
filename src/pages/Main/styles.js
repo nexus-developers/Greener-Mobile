@@ -61,7 +61,6 @@ export const TextCard = styled.Text`
   color: #000;
   font-size: 25px;
   text-align: center;
-
 `
 
 export const CardDescription = styled.Text`
@@ -72,5 +71,30 @@ export const CardDescription = styled.Text`
 export const Divisor = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border: 1px;
+  border-color: #62BE92;
+  border-bottom-width: 2px;
+  border-bottom-color: #E9FFED;
+`
+
+export const SurveyCard = styled.View`
+  width: 300px; 
+  height: 80px;
+  border: 4px solid;
+  border-radius: 4px;
+  border-color: #62BE92;
+  background-color: #62BE92;
+`
+
+export const CardDate = styled.Text`
+  margin-left: 20px;
+  font-weight: bold;
+  color: #Fff;
+`
+export const CardLocation = styled.Text`
+  margin-right: 20px;
+  font-weight: bold;
+  color: #Fff;
 `
