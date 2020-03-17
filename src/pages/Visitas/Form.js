@@ -26,6 +26,16 @@ export default class Form extends Component {
         survey: []
     }
 
+    getSurvey = () => {
+        firebase.database().ref('/').on('value', snapshot => {
+         const data = snapshot.val() 
+         // let dataItens = data
+         this.setState(
+           data
+         )
+       })
+     }
+
     writeUserData(name, date, local){
 
         const { navigation } = this.props
@@ -34,11 +44,13 @@ export default class Form extends Component {
         // const date = this.ref.date.value;
         // const local = this.ref.local.value;
 
+        // const uid = firebase.database().ref().child('survey').push().key;
+
         survey.push({ name, date, local });
         this.setState({survey});
         
 
-        firebase.database().ref().child('survey').set(this.state.survey).then((data) => {
+        firebase.database().ref().child('survey/').set(this.state.survey).then((data) => {
             console.log('data', data);
         }).catch((error) => {
             console.log('error', error)
@@ -54,6 +66,10 @@ export default class Form extends Component {
         // this.ref.local.value = '';
         navigation.navigate('main')
     }
+
+    componentDidMount(){
+        this.getSurvey();
+      }
     
     
     render(){
